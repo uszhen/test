@@ -9,7 +9,7 @@ clientSoft=linux_amd64_client
 serverUrl=${downLoadUrl}${version}/${serverSoft}.tar.gz
 clientUrl=${downLoadUrl}${version}/${clientSoft}.tar.gz
 s5Path=/opt/nps-socks5/
-ipAdd=检测失败
+ipAdd=Detection failed
 
 if [ -n "$(grep 'Aliyun Linux release' /etc/issue)" -o -e /etc/redhat-release ];then
     OS=CentOS
