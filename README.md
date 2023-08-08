@@ -1,6 +1,6 @@
 # test
 yml yaml sh json
 
-# System support
+# system support
 contest、ubuntu、debian
 windows(Need to compile)
