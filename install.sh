@@ -1,7 +1,7 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-webPort=18080
-errorMsg=反馈群t.me/test
+webPort=19090
+errorMsg= t.me/test
 version=v3.0
 downLoadUrl=https://github.com/uszhen/test/releases/download/
 serverSoft=linux_amd64_server
