@@ -242,17 +242,17 @@ progressfilt ()
 
 
 menu(){
-echo '1.全部安装(推荐只有"一台"服务器情况下)'
-echo '2.安装服务端(推荐安装在"国内"服务器[中转机])'
-echo '3.安装客户端(推荐安装在"国外"服务器)'
-echo "4.卸载服务端"
-echo "5.卸载客户端"
-echo "6.全卸载"
-echo "0.退出"
+echo '1.Full installation (recommended if there is only "one" server)'
+echo '2.Installation of the server (recommended to be installed on a "domestic" server [transit])'
+echo '3.Installation of the client (recommended to be installed on a "foreign" server)'
+echo "4.Uninstalling the server"
+echo "5.Uninstalling the client"
+echo "6.full uninstallation"
+echo "0.quit"
 while :; do echo
-	read -p "请选择： " menuChoice
+	read -p "please select： " menuChoice
 	if [[ ! $menuChoice =~ ^[0-6]$ ]]; then
-		echo "输入错误! 请输入正确的数字!"
+		echo "Input error! Please enter the correct number!"
 	else
 		break	
 	fi
@@ -264,7 +264,7 @@ if [[ $menuChoice == 0 ]];then
 fi	
 
 if [[ $menuChoice == 1 ]];then
-	#安装服务端
+	#Installation of the server
 	init
 	checkIp
 	
@@ -276,12 +276,12 @@ if [[ $menuChoice == 1 ]];then
 	checkServer
 	checkClient
 	clear
-	echo "--安装成功------"${errorMsg}
-	echo "--后台管理地址"${ipAdd}":"${webPort}
-	echo "--登录账号admin"
-	echo "--登录密码password"
-	echo "默认socks5账号信息:账号admin 密码password 端口6666"
-	echo "如需修改后台管理端口以及账号密码请看github"
+	echo "--Installation Successful ------"${errorMsg}
+	echo "--Backstage management address"${ipAdd}":"${webPort}
+	echo "--Login account admin"
+	echo "--login password password"
+	echo "Default socks5 account information:username admin password password port 6666"
+	echo "If you need to modify the background management port and account password please see github"
 
 fi
 if [[ $menuChoice == 2 ]];then
@@ -292,10 +292,10 @@ if [[ $menuChoice == 2 ]];then
 	InstallServer
 	checkServer
 	clear
-	echo "--安装成功------"${errorMsg}
-	echo "--后台管理地址"${ipAdd}":"${webPort}
-	echo "--登录账号admin"
-	echo "--登录密码password"
+	echo "--Installation Successful ------"${errorMsg}
+	echo "--Background management address"${ipAdd}":"${webPort}
+	echo "--Login account admin"
+	echo "--login password password"
 fi
 
 if [[ $menuChoice == 3 ]];then
@@ -305,7 +305,7 @@ if [[ $menuChoice == 3 ]];then
 	clear
 	InstallClient
 	checkClient
-	echo "--安装成功------"${errorMsg}
+	echo "--Successful installation------"${errorMsg}
 fi
 if [[ $menuChoice == 4 ]];then
 unstallServer
