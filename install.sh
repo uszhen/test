@@ -60,7 +60,7 @@ unstallServer(){
       rm -rf /usr/bin/nps
       rm -rf ${s5Path}${serverSoft}
 	fi
-	 echo "卸载服务端成功"
+	 echo "Uninstalled server successfully"
 }
 
 unstallClient(){
@@ -69,13 +69,13 @@ unstallClient(){
     	rm -rf ${s5Path}${clientSoft}
     	rm -rf ${s5Path}${clientSoft}.tar.gz
   fi
-  echo "卸载客户端成功"
+  echo "Uninstalled client successfully"
 }
 
 allUninstall(){
   unstallServer
   unstallClient
-  #删除之前的
+  #Delete the previous
   if [[ -d ${s5Path} ]];then
 	  rm -rf ${s5Path}
 	fi
@@ -85,14 +85,14 @@ checkIp(){
 
 ipAdd=`curl http://ifconfig.info -s --connect-timeout 10`
 clear
-echo "当前ip地址："${ipAdd}
-read -p "如果不对请停止安装或者手动输入服务器ip：(y/n/ip)： " choice
+echo "current ip address："${ipAdd}
+read -p "If this is not correct please stop the installation or enter the server manually ip：(y/n/ip)： " choice
 	
 	if [[ "$choice" == 'n' || "$choice" == 'N' ]]; then
-			echo "安装结束"
+			echo "End of installation"
 			exit 0
-	elif [[ "${choice}" == '' && "${ipAdd}" == '检测失败' ]]; then
-			echo "安装失败：ip不正确"
+	elif [[ "${choice}" == '' && "${ipAdd}" == 'detection failure' ]]; then
+			echo "Installation failed: incorrect ip"
 			exit 0
 	
 	elif [[ "$choice" != 'y' && "$choice" != 'Y' && "${choice}" != '' ]]; then
@@ -100,20 +100,20 @@ read -p "如果不对请停止安装或者手动输入服务器ip：(y/n/ip)： 
 	fi
 }
 
-#2.下载服务端
+#2.Download Server
 DownloadServer()
 {
-echo "下载nps-socks5服务中请耐心等待..."
+echo "Please be patient while downloading the nps-socks5 service..."
 if [[ ! -d ${s5Path} ]];then
 	mkdir -p ${s5Path}	
 fi
 
-#服务端
+#Server
 wget -P ${s5Path} --no-cookie --no-check-certificate ${serverUrl} 2>&1 | progressfilt
 
 
 if [[ ! -f ${s5Path}${serverSoft}.tar.gz ]]; then
-	echo "服务端文件下载失败"${errorMsg}
+	echo "Server file download failure"${errorMsg}
 	exit 0
 fi
 
@@ -121,13 +121,13 @@ fi
 
 DownloadClient()
 {
-echo "下载nps-socks5客户端中请耐心等待..."
+echo "Please be patient while downloading the nps-socks5 client..."
 if [[ ! -d ${s5Path} ]];then
 	mkdir -p ${s5Path}	
 fi
 
 
-#客户端
+#client
 wget -P ${s5Path} --no-cookie --no-check-certificate ${clientUrl} 2>&1 | progressfilt
 
 
@@ -137,11 +137,11 @@ if [[ ! -f ${s5Path}${clientSoft}.tar.gz ]]; then
 fi
 }
 
-#3.安装Socks5服务端程序
+#3.Client file download failed
 InstallServer()
 {
 echo ""
-echo "服务端文件解压中..."
+echo "The server files are being unpacked..."
 
 tar zxvf ${s5Path}${serverSoft}.tar.gz -C ${s5Path}
 
@@ -153,7 +153,7 @@ InstallClient()
 {
 
 echo ""
-echo "客户端文件解压中..."
+echo "Client file decompression in progress..."
 if [[ ! -d ${s5Path}${clientSoft} ]]; then
 echo "-------------"${s5Path}${clientSoft}
 mkdir -p ${s5Path}${clientSoft}
@@ -161,15 +161,15 @@ fi
 tar zxvf ${s5Path}${clientSoft}.tar.gz -C ${s5Path}${clientSoft}
 
 clear
-echo "客户端文件安装中..."
+echo "Client file installation in progress..."
 cd ${s5Path}${clientSoft}
 if [[ $menuChoice == 1 ]];then
 ./npc install  -server=${ipAdd}:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp && npc start
 else
-echo "服务器参数在[服务端]->服务列表+号中"
-echo "类似：./npc -server=xxx.xxx.xxx.172:8089 -vkey=test8socks8world2023 -type=tcp"
-echo "只需要输入:-server=xxx.xxx.xxx.172:8089 -vkey=test8socks8world2023 -type=tcp 即可"
-read -p "请输入服务端参数： " serverParam
+echo "The server parameters are in the [Server]->Services list + sign"
+echo "analog：./npc -server=xxx.xxx.xxx.172:8089 -vkey=test8socks8world2023 -type=tcp"
+echo "Just type:-server=xxx.xxx.xxx.172:8089 -vkey=test8socks8world2023 -type=tcp 即可"
+read -p "Please enter server-side parameters： " serverParam
 ./npc install ${serverParam} && npc start
 fi
 }
@@ -177,11 +177,11 @@ fi
 
 
 checkServer(){
-#检查服务端是否安装成功
+#Check if the server is installed successfully
 SPID=`ps -ef|grep nps |grep -v grep|awk '{print $2}'`
 if [[ -z ${SPID} ]]; then
 echo ${SPID}"SPID----------------------"
-echo "服务端安装失败"${errorMsg}
+echo "Server installation failed"${errorMsg}
 unstallServer
 exit 0
 fi
@@ -192,7 +192,7 @@ checkClient(){
 
 CPID=`ps -ef|grep npc |grep -v grep|awk '{print $2}'`
 if [[ -z ${CPID} ]]; then
-echo "客户端安装失败"${errorMsg}
+echo "Client installation failed"${errorMsg}
 unstallClient
 exit 0
 fi
@@ -208,11 +208,11 @@ function check_ip(){
                 if [[ $VALID_CHECK == "yes" ]]; then
                         return=$IP
                 else
-                        echo "安装失败：ip不正确"
+                        echo "Installation failed: incorrect ip"
 						exit 0
                 fi
         else
-               echo "安装失败：非ip"
+               echo "Installation failed: non-ip"
 			   exit 0
         fi
 }
