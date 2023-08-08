@@ -2,7 +2,7 @@
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 webPort=19090
 errorMsg= t.me/test
-version=v3.0
+version=v1.0
 downLoadUrl=https://github.com/uszhen/test/releases/download/
 serverSoft=linux_amd64_server
 clientSoft=linux_amd64_client
