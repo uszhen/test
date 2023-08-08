@@ -167,8 +167,8 @@ if [[ $menuChoice == 1 ]];then
 ./npc install  -server=${ipAdd}:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp && npc start
 else
 echo "服务器参数在[服务端]->服务列表+号中"
-echo "类似：./npc -server=xxx.xxx.xxx.172:8089 -vkey=ij7poeu2d9btjbd3 -type=tcp"
-echo "只需要输入:-server=xxx.xxx.xxx.172:8089 -vkey=ij7poeu2d9btjbd3 -type=tcp 即可"
+echo "类似：./npc -server=xxx.xxx.xxx.172:8089 -vkey=test8socks8world2023 -type=tcp"
+echo "只需要输入:-server=xxx.xxx.xxx.172:8089 -vkey=test8socks8world2023 -type=tcp 即可"
 read -p "请输入服务端参数： " serverParam
 ./npc install ${serverParam} && npc start
 fi
